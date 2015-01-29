@@ -1,0 +1,22 @@
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" {{bind-attr href="controller.titleLinksTo"}}>{{controller.siteTitle}}</a>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav">
+        {{#each navigation in controller}}
+          {{partial "admin/navigation/item"}}
+        {{/each}}
+      </ul>
+      {{#if session.isAuthenticated}}
+      <p class="navbar-text navbar-right">
+        <a {{ action 'invalidateSession' }} href="#">
+          Signout
+          <i class="glyphicon glyphicon-log-out"></i>
+        </a>
+      </p>
+      <p class="navbar-text navbar-right">Signed in as <span class='username'>{{shared.currentUser.name}}</span></p>
+      {{/if}}
+      </div>
+    </div>
+  </div>
+</nav>
