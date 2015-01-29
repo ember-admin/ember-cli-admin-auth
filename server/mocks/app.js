@@ -1,6 +1,3 @@
-var Chance = require('chance');
-var chance = new Chance();
-
 module.exports = function(app) {
   var express = require('express');
   var appRouter = express.Router();
