@@ -1,18 +1,25 @@
 import Navigation from 'ember-cli-admin/dsl/navigation';
+var initializer;
 
-export default {
+initializer = {
   name: 'navigation',
   initialize: function() {
     return Navigation.map(function() {
-      //Dashboard page
-      //You can override this if you don't use dashboard
-      this.navigate("Dashboard", { route: "dashboard" });
-      this.navigate("users");
-      this.navigate("companies");
-      this.navigate("company-plans");
-      this.navigate("payments");
-      this.navigate("app-docs");
-      this.navigate("locales");
+
+      /*
+        Dashboard page
+        You can owerride this if you don't use dashboard
+       */
+      this.navigate("Dashboard", {
+        route: "dashboard"
+      });
+      this.navigate("Admin", function() {
+        this.navigate("Users");
+        return this.navigate("User Categories");
+      });
+      return this.navigate("Catalogues");
     });
   }
 };
+
+export default initializer;

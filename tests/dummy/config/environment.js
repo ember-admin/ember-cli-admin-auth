@@ -7,6 +7,8 @@ module.exports = function(environment) {
     baseURL: '/',
     locationType: 'auto',
     EmberENV: {
+      appName: 'Sample App Name',
+      titleLinksTo: '/example/url',
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
         // e.g. 'with-controller': true
@@ -18,27 +20,19 @@ module.exports = function(environment) {
       // when it is created
     }
   };
-  ENV['simple-auth'] = {
-    authorizer: 'simple-auth-authorizer:devise',
-    routeAfterAuthentication: '/'
-  };
+
   if (environment === 'development') {
     // ENV.APP.LOG_RESOLVER = true;
-    // ENV.APP.LOG_ACTIVE_GENERATION = true;
+    ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
-    // ENV.APP.LOG_VIEW_LOOKUPS = true;
-    ENV['simple-auth-devise'] = {
-      resourceName: 'user',
-      serverTokenEndpoint: '/api/users/sign_in'
-    };
-    ENV['simple-auth'].crossOriginWhitelist = ['*'];
+    ENV.APP.LOG_VIEW_LOOKUPS = true;
   }
 
   if (environment === 'test') {
     // Testem prefers this...
     ENV.baseURL = '/';
-    ENV.locationType = 'none';
+    ENV.locationType = 'auto';
 
     // keep test console output quieter
     ENV.APP.LOG_ACTIVE_GENERATION = false;
