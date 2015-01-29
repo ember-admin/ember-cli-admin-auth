@@ -1,1 +1,5 @@
-{{partial 'admin/index'}}
+{{#if session.isAuthenticated}}
+  {{partial 'admin/index'}}
+{{else}}
+  {{outlet 'login'}}
+{{/if}}

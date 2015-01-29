@@ -45,44 +45,19 @@ module.exports = function(app) {
   });
 
   appRouter.get('/users/:id', function(req, res) {
+    if(req.params.id === 'admin'){
+      res.send({user: {id: 1, name: 'testuser', lat: 50, long: 40, zoom: 3}});
+    }
     res.send({user: {id: req.params.id, name: 'testuser', lat: 50, long: 40, zoom: 3}});
+  });
+
+  appRouter.post('/users/sign_in', function(req, res) {
+    res.send({user_token: 'token123456', user_email: 'test@example.com'});
   });
 
   appRouter.put('/users/:id', function(req, res) {
     res.send({user: {id: req.params.id, name: req.body.user.name, lat: req.body.user.lat, long: req.body.user.long, zoom: req.body.user.zoom}});
   });
-
-
-  var user_category = {id: 1, name: 'test', expired_at: new Date(), zip_code: '123456', description: chance.paragraph({sentences: 10}), is_created: true, email: 'foo@bar.com', color: '#AFAFAF' };
-  appRouter.get('/user_categories', function(req, res) {
-    res.send({user_categories: [user_category]});
-  });
-  appRouter.delete('/user_categories/:id', function(req, res) {
-    res.send({});
-  });
-
-  appRouter.get('/user_categories/:id', function(req, res) {
-    res.send({user_category: user_category});
-  });
-
-  appRouter.put('/user_categories/:id', function(req, res) {
-    res.send({user_category: {id: req.params.id, name: req.body.user_category.name, expired_at: req.body.user_category.expired_at, zip_code: req.body.user_category.zip_code, description: req.body.user_category.description, is_created: req.body.user_category.is_created, email: req.body.user_category.email, color: req.body.user_category.color}});
-  });
-
-  appRouter.get('/catalogues', function(req, res){
-    var catalogues = [{id: 1, name: 'Tree #1', parent_id: null, catalogue_ids: [2,3]},
-      {id: 2, name: 'Tree #2', parent_id: 1, catalogue_ids: [4]},
-      {id: 3, name: 'Tree #3', parent_id: 1, catalogue_ids: [5]},
-      {id: 4, name: 'Tree #4', parent_id: 2, catalogue_ids: []},
-      {id: 5, name: 'Tree #5', parent_id: 3, catalogue_ids: []}
-    ];
-    res.send({catalogues: catalogues});
-  });
-
-
-appRouter.post('/catalogues', function(req, res){
-  res.send({});
-});
 
   appRouter.post('/avatars', function(req, res) {
 //    req.on('data', function(chunk){ console.log(chunk)});
