@@ -5,7 +5,6 @@ initializer = {
   name: 'navigation',
   initialize: function() {
     return Navigation.map(function() {
-
       this.navigate("Dashboard", {
         route: "dashboard"
       });
