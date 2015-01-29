@@ -3,23 +3,20 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Dummy</title>
+    <title>AdminApp</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     {{content-for 'head'}}
 
     <link rel="stylesheet" href="assets/vendor.css">
-    <link rel="stylesheet" href="assets/dummy.css">
-
-    {{content-for 'head-footer'}}
+    <link rel="stylesheet" href="assets/admin-app.css">
+    <link rel="icon" href="/assets/favicon.ico">
   </head>
   <body>
     {{content-for 'body'}}
-
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&key=AIzaSyCqyf1CwoH9VU6XNYBmIXZSRsMQ0BJUOrw&libraries=places"></script>
     <script src="assets/vendor.js"></script>
-    <script src="assets/dummy.js"></script>
-
-    {{content-for 'body-footer'}}
+    <script src="assets/admin-app.js"></script>
   </body>
 </html>
