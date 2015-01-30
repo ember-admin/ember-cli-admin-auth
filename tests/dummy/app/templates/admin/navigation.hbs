@@ -8,13 +8,7 @@
         {{/each}}
       </ul>
       {{#if session.isAuthenticated}}
-      <p class="navbar-text navbar-right">
-        <a {{ action 'invalidateSession' }} href="#">
-          Signout
-          <i class="glyphicon glyphicon-log-out"></i>
-        </a>
-      </p>
-      <p class="navbar-text navbar-right">Signed in as <span class='username'>{{shared.currentUser.name}}</span></p>
+        {{signout-link signoutAction='invalidateSession' currentUser=shared.currentUser nameAttribute='name' avatarAttribute='avatar'}}
       {{/if}}
       </div>
     </div>

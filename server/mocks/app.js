@@ -43,7 +43,7 @@ module.exports = function(app) {
 
   appRouter.get('/users/:id', function(req, res) {
     if(req.params.id === 'admin'){
-      return res.send({user: {id: 1, name: 'testuser', lat: 50, long: 40, zoom: 3}});
+      return res.send({user: {id: 1, name: 'Admin', lat: 50, long: 40, zoom: 3, avatar_id: 1}, avatars: [{id: 1, thumb_url: 'http://placehold.it/50x50', url: 'http://placehold.it/350x350'}]});
     }
     res.send({user: {id: req.params.id, name: 'testuser', lat: 50, long: 40, zoom: 3}});
   });
