@@ -28,3 +28,14 @@ test('redirects to /login when I try to see content as not authenticated user', 
     });
   });
 });
+
+test('shows content when I`m authenticated', function() {
+  expect(1);
+
+  authenticateSession();
+  visit('/');
+
+  andThen(function() {
+    equal(currentURL(), '/');
+  });
+});
