@@ -43,7 +43,7 @@ module.exports = function(app) {
 
   appRouter.get('/users/:id', function(req, res) {
     if(req.params.id === 'admin'){
-      res.send({user: {id: 1, name: 'testuser', lat: 50, long: 40, zoom: 3}});
+      return res.send({user: {id: 1, name: 'testuser', lat: 50, long: 40, zoom: 3}});
     }
     res.send({user: {id: req.params.id, name: 'testuser', lat: 50, long: 40, zoom: 3}});
   });
@@ -57,7 +57,6 @@ module.exports = function(app) {
   });
 
   appRouter.post('/avatars', function(req, res) {
-//    req.on('data', function(chunk){ console.log(chunk)});
     res.send({avatar: {id: 1, thumb_url: 'http://media-cache-ak0.pinimg.com/236x/0c/e6/7f/0ce67fa7c94da77ab90877e65f3fda87.jpg', url: 'http://www.londra.us/Bristol_Castle.jpg'}});
   });
 
