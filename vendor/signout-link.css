@@ -1,0 +1,12 @@
+.username {
+  color: #FFF;
+  font-weight: bold;
+}
+
+.avatar {
+  height:auto;
+  width:auto;
+  max-width:30px;
+  max-height:30px;
+  margin-top: -5px;
+}
