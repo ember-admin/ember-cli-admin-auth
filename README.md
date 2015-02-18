@@ -1,5 +1,8 @@
 #Ember-Cli-Admin-Auth
 
+[![Build Status](https://travis-ci.org/ember-admin/ember-cli-admin-auth.svg)](https://travis-ci.org/ember-admin/ember-cli-admin-auth)
+[![npm version](https://badge.fury.io/js/ember-cli-admin-auth.svg)](http://badge.fury.io/js/ember-cli-admin-auth)
+
 Ember-Cli-Admin-Auth is a plugin for [Ember-Cli-Admin] [2] that provides easy way to add authorization functionality.
 
 ##Installation
