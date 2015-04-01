@@ -1,41 +1,42 @@
 import Ember from 'ember';
+import {module, test} from 'qunit';
 import startApp from '../helpers/start-app';
 
 var application;
 
 module('Acceptance: Auth', {
-  setup: function() {
+  beforeEach: function() {
     application = startApp();
   },
-  teardown: function() {
+  afterEach: function() {
     Ember.run(application, 'destroy');
   }
 });
 
-test('redirects to /login when I try to see content as not authenticated user', function() {
-  expect(2);
+test('redirects to /login when I try to see content as not authenticated user', function(assert) {
+  assert.expect(2);
 
   invalidateSession();
   visit('/');
 
   andThen(function() {
-    equal(currentPath(), 'login');
+    assert.equal(currentPath(), 'login');
 
     visit('/users');
 
     andThen(()=>{
-      equal(currentPath(), 'login');
+      assert.equal(currentPath(), 'login');
     });
   });
 });
 
-test('shows content when I`m authenticated', function() {
-  expect(1);
+test('shows content when I`m authenticated', function(assert) {
+  assert.expect(1);
 
   authenticateSession();
   visit('/');
 
   andThen(function() {
-    equal(currentURL(), '/');
+    assert.equal(currentURL(), '/');
   });
 });
