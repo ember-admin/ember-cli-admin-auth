@@ -7,7 +7,7 @@ export default Ember.Component.extend({
       if(this.get('avatarAttribute')){
         this.setProperties({
           isAvatarPresent: !Ember.isEmpty(currentUser.get(this.get('avatarAttribute'))),
-          avatarUrl: currentUser.get(this.get('avatarAttribute')).get('thumb_url')
+          avatarUrl: currentUser.get(this.get('avatarAttribute.thumb_url'))
         });
       }
       this.set('username', currentUser.get(this.get('nameAttribute')));
