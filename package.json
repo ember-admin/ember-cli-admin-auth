@@ -1,6 +1,6 @@
 {
   "name": "ember-cli-admin-auth",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Authentication module for Ember-Cli-Admin",
   "directories": {
     "doc": "doc",
