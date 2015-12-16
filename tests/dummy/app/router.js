@@ -8,10 +8,10 @@ var Router = Ember.Router.extend({
 
 Router.map(function() {
   this.route('login');
-  this.route("dashboard", {path: "/"});
 });
 
 MetaRoute.map(Router, function() {
+  this.route("dashboard", {path: "/"});
   this.resources("users");
 });
 

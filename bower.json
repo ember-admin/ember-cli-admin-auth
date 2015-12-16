@@ -19,7 +19,8 @@
     "typeahead.js": "0.10.5",
     "jquery-ui-sortable": "*",
     "bootstrap-datepicker": "~1.4.0",
-    "jquery-ui-touch-punch": "furf/jquery-ui-touch-punch"
+    "jquery-ui-touch-punch": "furf/jquery-ui-touch-punch",
+    "jquery-ui-touch-punch-improved": "0.3.1"
   },
   "resolutions": {
     "ember": "2.2.0"

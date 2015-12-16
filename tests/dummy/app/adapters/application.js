@@ -1,8 +1,12 @@
-import DS from 'ember-data';
-var adapter;
+import ENV from '../config/environment';
+import ActiveModelAdapter from 'active-model-adapter';
+import DataAdapterMixin from 'ember-simple-auth/mixins/data-adapter-mixin';
 
-adapter = DS.ActiveModelAdapter.extend({
-  namespace: 'api'
+export default ActiveModelAdapter.extend(DataAdapterMixin, {
+  namespace: 'api',
+  authorizer: 'authorizer:devise',
+  host: ENV.adapterUrl,
+  shouldBackgroundReloadAll() {
+    return false;
+  }
 });
-
-export default adapter;
