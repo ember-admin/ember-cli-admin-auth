@@ -5,7 +5,7 @@ export default Ember.Component.extend({
   store: Ember.inject.service(),
   currentUser: Ember.computed(function() {
     let id = this.get('session.data.authenticated.id');
-    return this.get('store').find('user', id)
+    return this.get('store').find('user', id);
   }),
   isAvatarEmpty: Ember.computed.empty('currentUser.avatar'),
   actions:{
