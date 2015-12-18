@@ -7,7 +7,7 @@ module.exports = function(environment) {
     baseURL: '/',
     locationType: 'auto',
     EmberENV: {
-      appName: 'dummy',
+      appName: 'ember-cli-admin-auth',
       titleLinksTo: 'http://ember-admin.com',
       FEATURES: {
         // Here you can enable experimental features on an ember canary build

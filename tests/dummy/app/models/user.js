@@ -1,7 +1,6 @@
 import DS from 'ember-data';
-var user;
 
-user = DS.Model.extend({
+export default DS.Model.extend({
   email: DS.attr('string'),
   name: DS.attr('string'),
   nickname: DS.attr('string'),
@@ -39,7 +38,5 @@ user = DS.Model.extend({
       });
     }
     return actions;
-  }).property('is_active')
+  })
 });
-
-export default user;

@@ -4,13 +4,9 @@ module.exports = {
   description: 'Generates ember-simple-auth components and settings',
   normalizeEntityName: function() {},
   afterInstall: function() {
-    this.addBowerPackagesToProject([
-      {name: "ember-simple-auth", target: "0.7.2"}
-    ]);
 
     return this.addPackagesToProject([
-      {name: "ember-cli-simple-auth", target: "^0.7.2"},
-      {name: "ember-cli-simple-auth-devise", target: "^0.7.2"}
+      {name: "ember-simple-auth", target: "^1.0.1"},
     ]);
   },
   beforeInstall: function(options) {
@@ -18,7 +14,7 @@ module.exports = {
     process('app/templates/application.hbs',
       {
         replace: {
-          "{{partial 'admin/index'}}": "{{#if session.isAuthenticated}}\n\t{{partial 'admin/index'}}\n{{else}}\n\t{{outlet 'login'}}\n{{/if}}"
+          "{{partial 'admin/index'}}": "{{#if session.isAuthenticated}}\n\t{{signout-link}}\n\t{{partial 'admin/index'}}\n{{else}}\n\t{{partial 'login'}}\n{{/if}}"
         }
       });
     process('app/router.js',
@@ -27,18 +23,17 @@ module.exports = {
           "Router.map(function() {": "Router.map(function() {\n\tthis.route(\"login\");\n"
         }
       });
-    process('config/environment.js',
+    process('app/styles/app.scss',
       {
         insert: {
-          "if (environment === 'development') {": {content: "ENV['simple-auth'] = {\n\t\tauthorizer: 'simple-auth-authorizer:devise',\n\t\trouteAfterAuthentication: '/'\n\t};\n\n\t", before: true},
-          "if (environment === 'development') {": {content: "\n\t\tENV['simple-auth-devise'] = {\n\t\t\tresourceName: 'user',\n\t\t\tserverTokenEndpoint: '/api/v1/users/sign_in'\n\t\t};\n\t\tENV['simple-auth'].crossOriginWhitelist = ['*'];\n", after: true}
+          "@import 'ember-cli-admin';": {content: "\n@import 'components/signout';", after: true}
         }
       });
     process('app/routes/main.js',
       {
         insert: {
-          "'ember-cli-admin/mixins/routes/base';": {content: "\nimport ApplicationRouteMixin from 'simple-auth/mixins/application-route-mixin';\n\nBaseAdminRouteMixin.reopen(ApplicationRouteMixin);\n", after: true},
-          "extend(BaseAdminRouteMixin": {content: ", {\n\tredirect: function(){\n\t\tif(!this.get('session.isAuthenticated')){\n\t\t\tthis.transitionTo('login');\n\t\t}\n\t}\n}" , after: true}
+          "import BaseAdminRouteMixin from 'ember-cli-admin/mixins/routes/base';": {content: "\nimport ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';\n", after: true},
+          "export default Ember.Route.extend(BaseAdminRouteMixin": {content: ", , ApplicationRouteMixin, {, ApplicationRouteMixin, {\n\tbeforeModel: function(transition){\n\tthis._super(transition);\nif(!this.get('session.isAuthenticated')){\n\tthis.transitionTo('login');\n}\n}\n}" , after: true}
         }
       });
   }

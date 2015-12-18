@@ -1,5 +1,6 @@
 {{#if session.isAuthenticated}}
+  {{signout-link}}
   {{partial 'admin/index'}}
 {{else}}
-  {{outlet 'login'}}
+  {{partial 'login'}}
 {{/if}}
