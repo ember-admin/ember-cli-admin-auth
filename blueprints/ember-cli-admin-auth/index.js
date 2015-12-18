@@ -33,7 +33,7 @@ module.exports = {
       {
         insert: {
           "import BaseAdminRouteMixin from 'ember-cli-admin/mixins/routes/base';": {content: "\nimport ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';\n", after: true},
-          "export default Ember.Route.extend(BaseAdminRouteMixin": {content: ", , ApplicationRouteMixin, {, ApplicationRouteMixin, {\n\tbeforeModel: function(transition){\n\tthis._super(transition);\nif(!this.get('session.isAuthenticated')){\n\tthis.transitionTo('login');\n}\n}\n}" , after: true}
+          "export default Ember.Route.extend(BaseAdminRouteMixin": {content: ", ApplicationRouteMixin, {\n\tbeforeModel: function(transition){\n\t\tthis._super(transition);\n\t\tif(!this.get('session.isAuthenticated')){\n\t\t\tthis.transitionTo('login');\n\t\t}\n\t}\n}" , after: true}
         }
       });
   }
