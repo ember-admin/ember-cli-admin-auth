@@ -42,6 +42,14 @@
     <script src="assets/tests.js"></script>
     <script src="testem.js" integrity=""></script>
     <script src="assets/test-loader.js"></script>
+    <script type="text/javascript" charset="utf-8">
+      Function.prototype.bind = Function.prototype.bind || function (thisp) {
+          var fn = this;
+          return function () {
+              return fn.apply(thisp, arguments);
+          };
+      };
+    </script>
     <script src="http://api-maps.yandex.ru/2.0/?load=package.standard&lang=ru-Ru"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&key=AIzaSyCqyf1CwoH9VU6XNYBmIXZSRsMQ0BJUOrw&libraries=places"></script>
   </body>

@@ -33,8 +33,10 @@ test('redirects to /login when I try to see content as not authenticated user', 
 
 test('shows content when I`m authenticated', function(assert) {
   assert.expect(1);
+  server.createList('user', 1);
+  server.createList('avatar', 1);
 
-  authenticateSession(application, { id: 1 });
+  authenticateSession(application, {token: 'token123456', email: 'test@example.com', id: "1"});
   visit('/');
 
   andThen(function() {

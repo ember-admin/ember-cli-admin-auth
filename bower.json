@@ -5,22 +5,23 @@
     "jquery": "^1.11.1",
     "ember": "2.2.0",
     "ember-data": "2.2.0",
-    "ember-resolver": "~0.1.12",
-    "loader.js": "ember-cli/loader.js#3.2.1",
+    "ember-resolver": "~0.1.20",
+    "loader.js": "ember-cli/loader.js#3.3.0",
     "ember-cli-shims": "stefanpenner/ember-cli-shims#0.0.3",
     "ember-cli-test-loader": "0.2.2",
     "ember-load-initializers": "0.1.7",
     "ember-qunit": "0.4.7",
     "ember-qunit-notifications": "0.0.7",
-    "ember-resolver": "~0.1.20",
     "qunit": "~1.17.1",
-    "pretender": "0.1.0",
+    "pretender": "~0.10.1",
     "bootstrap-sass-official": "3.3.4",
     "typeahead.js": "0.10.5",
     "jquery-ui-sortable": "*",
     "bootstrap-datepicker": "~1.4.0",
     "jquery-ui-touch-punch": "furf/jquery-ui-touch-punch",
-    "jquery-ui-touch-punch-improved": "0.3.1"
+    "jquery-ui-touch-punch-improved": "0.3.1",
+    "lodash": "~3.7.0",
+    "Faker": "~3.0.0"
   },
   "resolutions": {
     "ember": "2.2.0"
