@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import {module, test} from 'qunit';
 import startApp from '../helpers/start-app';
+import { invalidateSession, authenticateSession } from '../helpers/ember-simple-auth';
 
 var application;
 
@@ -16,7 +17,7 @@ module('Acceptance: Auth', {
 test('redirects to /login when I try to see content as not authenticated user', function(assert) {
   assert.expect(2);
 
-  invalidateSession();
+  invalidateSession(application);
   visit('/');
 
   andThen(function() {
@@ -32,8 +33,10 @@ test('redirects to /login when I try to see content as not authenticated user', 
 
 test('shows content when I`m authenticated', function(assert) {
   assert.expect(1);
+  server.createList('user', 1);
+  server.createList('avatar', 1);
 
-  authenticateSession();
+  authenticateSession(application, {token: 'token123456', email: 'test@example.com', id: "1"});
   visit('/');
 
   andThen(function() {

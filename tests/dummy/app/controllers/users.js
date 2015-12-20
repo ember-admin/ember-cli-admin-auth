@@ -1,13 +1,12 @@
 import TableViewController from 'ember-cli-admin/mixins/controllers/table-view';
 import SearchLogic from 'ember-cli-admin/dsl/search';
 import Ember from 'ember';
-var usersController;
 
-usersController = Ember.Controller.extend(TableViewController, {
+export default Ember.Controller.extend(TableViewController, {
   sortFields: ['id', 'name'],
-  formAttributes: ['email', 'name'],
+  formAttributes: ['email', 'nickname'],
   searchForm: (function() {
-    return new SearchLogic().form(this.get('q'), function() {
+    return new SearchLogic().form(function() {
       this.input('email');
       this.input('name', {type: 'select', selectContent: ["Foo", "Bar"], prompt: 'Select Name'});
       this.input('birthdate', {type: 'date', placeholder: "Select birthdate", format: "dd MM, yyyy"});
@@ -17,7 +16,7 @@ usersController = Ember.Controller.extend(TableViewController, {
         displayKey: 'name'
       });
     });
-  }).property('q'),
+  }),
   actions: {
     toggleActive: function(item) {
       item.toggleProperty('is_active');
@@ -25,4 +24,3 @@ usersController = Ember.Controller.extend(TableViewController, {
   }
 });
 
-export default usersController;
